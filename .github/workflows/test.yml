@@ -28,6 +28,7 @@ jobs:
               ln -s "$2" "$SHIMS/$file"
               sudo rm -f "$file"
               ln -s "$SHIMS/$file" .
+              echo "shim $1 $2 $(readlink $1) $(cd "$SHIMS"; readlink $1)"
           }
 
           (
@@ -50,6 +51,7 @@ jobs:
           )
 
       - name: Brew
+        if: false
         run: |
           brew update
           brew upgrade
