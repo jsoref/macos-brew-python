@@ -27,6 +27,7 @@ jobs:
               ln -s "$2" "$SHIMS/$1"
               sudo rm -f "$1"
               ln -s "$SHIMS/$1" .
+              echo "shim $1 $2 $(readlink $1)"
           }
           (
               cd /usr/local/bin
@@ -34,6 +35,8 @@ jobs:
                   destination=$(readlink "$file")
                   case "$destination" in
                       ../Cellar/*)
+                      ;;
+                      ../Homebrew/*)
                       ;;
                       /*)
                           shim "$file" "$destination"
