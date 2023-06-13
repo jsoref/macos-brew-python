@@ -21,7 +21,7 @@ jobs:
 
       - name: Shim
         run: |
-          for pacakge in go python@3.11; do
+          for package in go python@3.11; do
               if brew info "$package" | grep -q ^/; then
                   brew link --overwrite "$package"
               fi
