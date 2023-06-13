@@ -18,3 +18,19 @@ jobs:
               find $p -type l -print0 |
                 xargs -0 ls -halw
             done
+
+      - name: Brew
+        run: |
+          brew update
+          brew upgrade
+
+      - name: Debug
+        run: |
+          export
+          echo $PATH |
+            tr ':' '\n' |
+            while read p; do
+              echo $p
+              find $p -type l -print0 |
+                xargs -0 ls -halw
+            done
